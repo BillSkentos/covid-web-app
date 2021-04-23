@@ -7,14 +7,13 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import FQA from '../Pages/FQA';
 
 function Home(){
   return <h1>I am home !</h1>
 }
 
-function FQA(){
-  return <h1>I am FQA !</h1>
-}
+
 
 function News(){
   return <h1>I am news !</h1>
@@ -65,6 +64,7 @@ export default function Navbar() {
   })
 
   return (
+
   <Router>  
  
     <section>  
@@ -81,7 +81,6 @@ export default function Navbar() {
           </button>
         </div>
       
-
         <Transition 
           className=" lg:hidden  w-full"
           show = {hamIsOpen}
@@ -107,8 +106,6 @@ export default function Navbar() {
     
 
         </Transition>
-
-
 
         {
           width >= 1024 &&  <div className="text-base space-x-12 -ml-2">
