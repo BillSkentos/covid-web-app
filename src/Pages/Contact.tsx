@@ -4,6 +4,7 @@ import ContactAnimation from '../Animations/37147-contact-us.json';
 import {useAppContext} from '../Components/ContextProvider';
 import {useForm} from 'react-hook-form';
 
+
 interface UserInput {
   firstName:string,
   lastName:string,
@@ -11,12 +12,11 @@ interface UserInput {
   message:string,
 }
 
-
 export default function Contact() {
   
   const {width} =  useAppContext();
   const {register,handleSubmit,formState:{errors}} = useForm<UserInput>();
-  
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -25,9 +25,16 @@ export default function Contact() {
       preserveAspectRatio: "xMidYMid slice"
     },
   }
+
+  const submitFunction = handleSubmit((data:UserInput)=>{
+    alert('Your message has been sent .');
+    window.location.reload();
+  })
+
   return (
    <div className="-mt-12">
-      <div
+      <form
+        onSubmit={submitFunction}
         className="maxW-screen-xl mt-24 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto  text-gray-900 rounded-lg shadow-lg">
         <div className="flex flex-col justify-between">
           <div>
@@ -43,22 +50,33 @@ export default function Contact() {
           <div>
             <span className="uppercase text-sm text-FQAItem font-bold ">First Name</span>
             <input className="w-full focus:bg-gray-100 bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+              {...register("firstName" , {required:true})}
               type="text" placeholder="" />
+              {errors.firstName && <span className="text-red-400 text-sm"> First Name is required .  </span> }
           </div>
           <div className="mt-8">
             <span className="uppercase text-sm text-FQAItem font-bold">Last Name</span>
             <input className="w-full focus:bg-gray-100 bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+              {...register("lastName" , {required:true})}
               type="text" placeholder="" />
+              {errors.lastName && <span className="text-red-400 text-sm"> Last Name is required .  </span> }
+
           </div>
           <div className="mt-8">
             <span className="uppercase text-sm text-FQAItem font-bold">Email</span>
             <input className="w-full focus:bg-gray-100 bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-              type="text" />
+              {...register("email" , {required:true})}
+
+              type="email" />
+              {errors.email && <span className="text-red-400 text-sm"> Enter a correct email.  </span> }
+
           </div>
           <div className="mt-8">
             <span className="uppercase text-sm text-FQAItem font-bold">Message</span>
-            <textarea
-              className="w-full h-32 focus:bg-gray-100 bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"></textarea>
+            <input
+              {...register("message" , {required:true , minLength:10})}
+              className="w-full h-32 focus:bg-gray-100 bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"></input>
+              {errors.message && <span className="text-red-400 text-sm"> Message should be at least 10 characters .  </span> }
           </div>
           <div className="mt-8">
             <button
@@ -67,7 +85,7 @@ export default function Contact() {
             </button>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   
 
