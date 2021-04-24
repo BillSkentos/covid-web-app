@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 import FQA from '../Pages/FQA';
 import HomePage from '../Pages/HomePage';
+import Contact from '../Pages/Contact';
 import {useAppContext} from '../Components/ContextProvider';
 
 function News(){
@@ -23,9 +24,6 @@ function Stats(){
   return <h1>I am stats !</h1>
 }
 
-function Contact(){
-  return <h1>I am contact!</h1>
-}
 
 export default function Navbar() {
   
