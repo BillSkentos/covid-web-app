@@ -4,6 +4,12 @@
 @tailwind utilities;
 
 
+/* navbar shadow */
+#appNavbar{
+  box-shadow: 0 0 6px 3px #6ec1e4;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 120%, 0% 120%);
+}
+
 /* Tab content - closed */
 .tab-content {
 max-height: 0;

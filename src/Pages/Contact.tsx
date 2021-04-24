@@ -29,7 +29,7 @@ export default function Contact() {
   const submitFunction = handleSubmit((data:UserInput)=>{
     alert('Your message has been sent .');
     window.location.reload();
-  })
+  });
 
   return (
    <div className="-mt-12">
