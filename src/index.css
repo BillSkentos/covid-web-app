@@ -71,3 +71,25 @@ transform: rotateX(180deg);
 background-color: #6ec1e4;
 color: #f8fafc; 
 }
+
+.alice-carousel ul li img{
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
+  display: flex;
+}
+
+
+@media only screen and (max-width: 600px){
+  .alice-carousel ul li img{
+    object-fit: contain;
+    height:300px;
+    width:100%;
+    display: flex;
+    padding:3px;
+  }
+}
+
+.alice-carousel .alice-carousel__prev-btn, .alice-carousel__next-btn{
+  display: none !important;
+}
