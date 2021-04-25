@@ -10,6 +10,12 @@
   clip-path: polygon(0% 0%, 100% 0%, 100% 120%, 0% 120%);
 }
 
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 /* Tab content - closed */
 .tab-content {
 max-height: 0;

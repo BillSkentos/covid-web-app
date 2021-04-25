@@ -1,33 +1,28 @@
 import React from 'react';
 import {useState,useEffect} from 'react';
 import {Transition} from '@tailwindui/react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from 'react-router-dom';
-import FQA from '../Pages/FQA';
-import HomePage from '../Pages/HomePage';
-import Contact from '../Pages/Contact';
+import {Link} from 'react-router-dom';
+
 import {useAppContext} from '../Components/ContextProvider';
 
-function News(){
+export function News(){
   return <h1>I am news !</h1>
 }
 
-function Dates(){
+export function Dates(){
   return <h1>I am dates !</h1>
 }
 
-function Stats(){
+export function Stats(){
   return <h1>I am stats !</h1>
 }
 
 
 export default function Navbar() {
   
+  const [sticky,setSticky] = useState(false);
   const {width} = useAppContext(); 
+  const[hamIsOpen , setHam]  = useState(false);
 
   const navOptions : {option:string , link:string}[] = [
 
@@ -40,16 +35,13 @@ export default function Navbar() {
     
   ];
 
-  const[hamIsOpen , setHam ]  = useState(false);
 
   const toggleHamburger = ()=>{
     setHam(!hamIsOpen);
   }
 
   return (
-
-  <Router>  
-      <nav id ="appNavbar" className="overflow-hidden flex items-center  justify-around flex-wrap  p-6 space-y-4 ">
+      <nav id ="appNavbar" className="overflow-hidden flex  items-center  justify-around flex-wrap  p-6 space-y-4 ">
         <div className="flex items-center text-white ">
           <img src="https://vaccination-info.eu/sites/default/themes/ecdc_vaccine/images/ecdc-vaccine-logo.png" alt="Αρχική" />
           <span className="font-semibold text-FQAItem text-sm md:text-base tracking-tight px-4">ΕΥΡΩΠΑΙΚΗ ΠΥΛΗ <br/> ΠΛΗΡΟΦΟΡΙΩΝ ΕΜΒΟΛΙΑΣΜΟΥ</span>
@@ -104,15 +96,7 @@ export default function Navbar() {
       </nav>
   
   
-    <Switch>
-         <Route exact path = "/"> <HomePage/>  </Route>
-         <Route  path = "/FQA"> <FQA/>  </Route>
-         <Route  path = "/news"> <News/>  </Route>
-         <Route  path = "/stats"> <Stats/>  </Route>
-         <Route  path = "/contact"> <Contact/>  </Route>
-         <Route  path = "/dates"> <Dates/>  </Route>
-    </Switch>
+
     
-  </Router>
   );
 }

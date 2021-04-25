@@ -20,7 +20,7 @@ export default function HomePage() {
 
   return (
     <>
-    <div className = "z-10 p-4 flex lg:flex-row flex-col items-center justify-center md:mt-12 lg:mt-8">
+    <div className = "p-4 flex lg:flex-row flex-col items-center justify-center md:mt-12 lg:mt-8">
       <div className="lg:w-1/2 w-full flex flex-col space-y-8 items-center">
         <h1 className="mt-12 text-lg sm:mt-4 font-mono sm:pl-12 sm:text-4xl text-bold text-FQAItem">Κλέισε ραντεβού για εμβολιασμό και <br/> δες πληροφορίες για τον κωροναϊό εδώ
         </h1>
