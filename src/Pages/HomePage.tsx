@@ -1,13 +1,16 @@
 import React from 'react';
+import {useState,useEffect} from 'react';
 import Lottie from 'react-lottie';
 import DoctorAnimation from '../Animations/53912-doctor-consultation-online-animation.json';
 import {Link} from 'react-router-dom';
 import {useAppContext} from '../Components/ContextProvider';
 import Carousel from '../Components/Carousel';
+import VideoSlider from '../Components/VideoSlider.js';
 
 export default function HomePage() {
   
   const {width} = useAppContext();
+  const [data,setData] = useState([]);
 
   const defaultOptions = {
     loop: true,
@@ -18,6 +21,7 @@ export default function HomePage() {
     },
   }
 
+  
   return (
     <>
     <div className = "p-4 flex lg:flex-row flex-col items-center justify-center md:mt-12 lg:mt-8">
@@ -35,7 +39,12 @@ export default function HomePage() {
         {width <768 && <Lottie options = {defaultOptions} width={300} height={300} /> }
       </div>
     </div> <br/>
-    <Carousel />
+    <Carousel /> <br/>
+    <VideoSlider /> 
+    <div className="flex items-center justify-center">
+      <img width="540" height="540" src="https://covid19.gov.gr/wp-content/uploads/2020/03/ethelontis-site-omzu8wccaavysccne1b931jzizqqh4qlb9pzpq48wo.png" className="attachment-large size-large" alt="Γίνε Εθελοντής" srcSet="https://covid19.gov.gr/wp-content/uploads/2020/03/ethelontis-site-omzu8wccaavysccne1b931jzizqqh4qlb9pzpq48wo.png 540w, https://covid19.gov.gr/wp-content/uploads/2020/03/ethelontis-site-omzu8wccaavysccne1b931jzizqqh4qlb9pzpq48wo-300x300.png 300w, https://covid19.gov.gr/wp-content/uploads/2020/03/ethelontis-site-omzu8wccaavysccne1b931jzizqqh4qlb9pzpq48wo-150x150.png 150w" sizes="(max-width: 540px) 100vw, 540px" />
+    </div>
+
     </>
   );
 

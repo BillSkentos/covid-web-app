@@ -41,7 +41,7 @@ export default function Navbar() {
   }
 
   return (
-      <nav id ="appNavbar" className="overflow-hidden flex  items-center  justify-around flex-wrap  p-6 space-y-4 ">
+      <nav id ="appNavbar" className="top-0 fixed inset-x-0 bg-white z-50 overflow-hidden flex  items-center  justify-around flex-wrap  p-6 space-y-4">
         <div className="flex items-center text-white ">
           <img src="https://vaccination-info.eu/sites/default/themes/ecdc_vaccine/images/ecdc-vaccine-logo.png" alt="Αρχική" />
           <span className="font-semibold text-FQAItem text-sm md:text-base tracking-tight px-4">ΕΥΡΩΠΑΙΚΗ ΠΥΛΗ <br/> ΠΛΗΡΟΦΟΡΙΩΝ ΕΜΒΟΛΙΑΣΜΟΥ</span>

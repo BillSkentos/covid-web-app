@@ -6,7 +6,7 @@ import {integerToString} from '../Components/functions';
 export default function FQA() {
 
   return (
-    <div className= "w-full flex items-center flex-col space-y-4 bg-FQA p-8 ">
+    <div className= "w-full flex items-center flex-col space-y-4 bg-FQA p-8 mt-4">
     
       <h2 className="text-blue-800 font-bold text-2xl mt-8">Συχνές Ερωτήσεις </h2>
       <br/>

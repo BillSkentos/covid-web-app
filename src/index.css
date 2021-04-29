@@ -99,3 +99,15 @@ color: #f8fafc;
 .alice-carousel .alice-carousel__prev-btn, .alice-carousel__next-btn{
   display: none !important;
 }
+
+
+
+.bSWeAW{
+  background-color: white !important;
+}
+
+.rec-arrow {
+   color:black !important;
+   outline:none !important;
+   outline-style: none  !important;
+}

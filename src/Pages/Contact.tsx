@@ -32,7 +32,7 @@ export default function Contact() {
   });
 
   return (
-   <div className="-mt-12">
+   <div className="mt-12">
       <form
         onSubmit={submitFunction}
         className="maxW-screen-xl mt-24 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto  text-gray-900 rounded-lg shadow-lg">
