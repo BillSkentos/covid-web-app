@@ -106,8 +106,14 @@ color: #f8fafc;
   background-color: white !important;
 }
 
-.rec-arrow {
+.rec-arrow  {
    color:black !important;
    outline:none !important;
    outline-style: none  !important;
+}
+
+
+.MuiInputAdornment-root >.MuiButtonBase-root{
+  outline: none !important;
+  outline-style: none !important;
 }

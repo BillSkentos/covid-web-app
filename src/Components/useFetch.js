@@ -2,7 +2,6 @@ import React from 'react';
 import {useState,useEffect} from 'react';
 
 
-
 export default function useFetch(date1, date2) {
   
   const [loading,setLoading] = useState(false);
@@ -12,7 +11,7 @@ export default function useFetch(date1, date2) {
    
   const fetchData = async () =>{
     
-    const url = 'https://data.gov.gr/api/v1/query/mdg_emvolio';
+    const url = `https://data.gov.gr/api/v1/query/mdg_emvolio?date_from=${date1}&date_to=${date2}`;
     
     try{
       setLoading(true);
@@ -20,7 +19,7 @@ export default function useFetch(date1, date2) {
           method:'GET',
           headers:{
             'Content-Type': 'application/json',
-            "Authorization": "Token "
+            "Authorization": `Token ${process.env.REACT_APP_EMVOLIO_API_KEY}`
           },
           data:{
             date_from:date1,

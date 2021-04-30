@@ -1,17 +1,27 @@
-import React from 'react'
-import { Line} from 'react-chartjs-2'
+import React from 'react';
+import {useEffect} from  'react';
+import { Line} from 'react-chartjs-2';
+import {getDaysRangeArray} from '../Components/functions';
 
 
 const Chart = () => {
+  
+  const dates = {
+     date1:'12/28/2020',
+     date2:'04/30/2021'
+  }
+
+  let daylist = getDaysRangeArray(new Date(dates.date1),new Date(dates.date2));
+
   return (
       <Line
         type = "line"
         data={{
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-          datasets: [
+          labels:[...daylist.map(d=>d.toDateString().slice(4,10))],
+        datasets: [
             {
-              label: '# of votes',
-              data: [12, 19, 3, 5, 2, 3],
+              label: 'Συνολικoί εμβολιασμοί μέχρι σήμερα',
+              data: [3,2,5,2,8],
               backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -50,6 +60,22 @@ const Chart = () => {
                 },
               },
             ],
+            xAxes: [{
+              type: 'time',
+              time: {
+                displayFormats: {
+                  'millisecond': 'MMM DD',
+                  'second': 'MMM DD',
+                  'minute': 'MMM DD',
+                  'hour': 'MMM DD',
+                  'day': 'MMM DD',
+                  'week': 'MMM DD',
+                  'month': 'MMM DD',
+                  'quarter': 'MMM DD',
+                  'year': 'MMM DD',
+                }
+              }
+            }],
           },
           legend: {
             labels: {

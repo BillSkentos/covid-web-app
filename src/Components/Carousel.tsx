@@ -11,7 +11,6 @@ const images = [
 
 
 
-
 export default function Carousel() {
   return (
     <AliceCarousel autoPlay={true}  autoPlayInterval={2500}>
@@ -20,8 +19,7 @@ export default function Carousel() {
           return <img src = {img.url} key={img.url} className="sliderImg" alt="carouselImg" />
         })
       }
-
-</AliceCarousel>
+    </AliceCarousel>
   )
 }
 

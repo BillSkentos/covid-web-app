@@ -47,3 +47,14 @@ export const integerToString = (num:number) : string =>{
 }
 
 
+export const getDaysRangeArray = (start:Date,end:Date) =>{
+  
+  let dateArr = [];
+
+  for(let dt=new Date(start); dt<=end; dt.setDate(dt.getDate()+1)){
+  dateArr.push(new Date(dt));
+  }
+
+  return dateArr;
+}
+

@@ -32,6 +32,7 @@ export default function Statistics() {
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Grid container>
             <KeyboardDatePicker
+                minDate = {new Date("2020-12-28")}
                 disableToolbar
                 variant="inline"
                 margin="normal"
@@ -47,6 +48,7 @@ export default function Statistics() {
             </Grid>
             <Grid container justify="space-around">
             <KeyboardDatePicker
+                maxDate = {new Date()}
                 disableToolbar
                 variant="inline"
                 margin="normal"
