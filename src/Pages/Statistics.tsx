@@ -5,6 +5,8 @@ import DateFnsUtils from '@date-io/date-fns';
 import {  MuiPickersUtilsProvider,KeyboardDatePicker, } from '@material-ui/pickers';
 import Grid from '@material-ui/core/Grid';
 import Chart from '../Components/Chart';
+import useFetch from '../Components/useFetch';
+
 
 
 
@@ -12,6 +14,8 @@ export default function Statistics() {
 
   const [firstDate , setFirstDate] = useState<Date | null>(new Date('2020-12-28T21:11:54'));
   const [secondDate , setSecondDate] = useState<Date | null>(new Date());
+
+  const {data,loading,error} = useFetch(firstDate!.toISOString().slice(0, 10),secondDate!.toISOString().slice(0, 10));
 
   const updateFirst = (date:Date | null) => {
     setFirstDate(date);
@@ -21,6 +25,7 @@ export default function Statistics() {
   const updateSecond = (date:Date |null) => {
     setSecondDate(date);
   };
+
 
   return (
     <div className="flex  flex-col space-between space-y-16 mt-36">
@@ -66,7 +71,7 @@ export default function Statistics() {
           </MuiPickersUtilsProvider>
         </div>
         <div className="w-full mx-auto p-4">
-          <Chart />
+          <Chart  isLoading = {loading} covidData = {data} hasError = {error} from = {firstDate} to = {secondDate}/>
         </div>
 
       </div>

@@ -58,3 +58,5 @@ export const getDaysRangeArray = (start:Date,end:Date) =>{
   return dateArr;
 }
 
+//chunk an array 
+export const chunkArray = (array:[], chunk_size:number) => Array(Math.ceil(array.length / chunk_size)).fill([]).map((_, index) => index * chunk_size).map(begin => array.slice(begin, begin + chunk_size));

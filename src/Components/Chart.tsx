@@ -4,24 +4,35 @@ import { Line} from 'react-chartjs-2';
 import {getDaysRangeArray} from '../Components/functions';
 
 
-const Chart = () => {
-  
-  const dates = {
-     date1:'12/28/2020',
-     date2:'04/30/2021'
-  }
+function getTotalVaccinations(data:any[]){   
 
-  let daylist = getDaysRangeArray(new Date(dates.date1),new Date(dates.date2));
+  let sum:number = data.reduce((acc:number,itm:any)=>{
+    if(itm.totalvaccinations!=="undefined"){
+      return acc + itm.totalvaccinations;
+    }
+  },0);
+  return sum;
+}
+
+const Chart = (props:any) => {
+ 
+
+  let daylist = getDaysRangeArray(new Date((props.from).toLocaleDateString('en-US')), new Date((props.to).toLocaleDateString('en-US')));
+
+
 
   return (
-      <Line
+    <>
+    {(props.covidData).length>0 
+         && 
+        <Line
         type = "line"
         data={{
           labels:[...daylist.map(d=>d.toDateString().slice(4,10))],
         datasets: [
             {
               label: 'Συνολικoί εμβολιασμοί μέχρι σήμερα',
-              data: [3,2,5,2,8],
+              data: [...props.covidData.map((dt:any)=>getTotalVaccinations(dt))],
               backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -79,11 +90,16 @@ const Chart = () => {
           },
           legend: {
             labels: {
-              fontSize: 25,
+              fontSize: 35,
             },
           },
         }}
       />
+    
+    }
+
+   </>    
+
   )
 }
 
