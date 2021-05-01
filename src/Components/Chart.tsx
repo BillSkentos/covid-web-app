@@ -1,11 +1,10 @@
-import React from 'react';
 import {useEffect} from  'react';
 import { Line} from 'react-chartjs-2';
 import {getDaysRangeArray} from '../Components/functions';
+import {dateToNum} from '../Components/functions';
 
 
 function getTotalVaccinations(data:any[]){   
-
   let sum:number = data.reduce((acc:number,itm:any)=>{
     if(itm.totalvaccinations!=="undefined"){
       return acc + itm.totalvaccinations;
@@ -19,10 +18,9 @@ const Chart = (props:any) => {
 
   let daylist = getDaysRangeArray(new Date((props.from).toLocaleDateString('en-US')), new Date((props.to).toLocaleDateString('en-US')));
 
-
-
   return (
-    <>
+    <div className="flex items-center place-items-center  w-full mx-auto">
+      {props.loading && <p>Loading ...</p>}
     {(props.covidData).length>0 
          && 
         <Line
@@ -33,6 +31,8 @@ const Chart = (props:any) => {
             {
               label: 'Συνολικoί εμβολιασμοί μέχρι σήμερα',
               data: [...props.covidData.map((dt:any)=>getTotalVaccinations(dt))],
+              // data: [...props.covidData.map((dt:any)=>{return dt.totalvaccinations})],
+
               backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -98,7 +98,7 @@ const Chart = (props:any) => {
     
     }
 
-   </>    
+   </div>    
 
   )
 }

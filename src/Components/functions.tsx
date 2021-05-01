@@ -60,3 +60,9 @@ export const getDaysRangeArray = (start:Date,end:Date) =>{
 
 //chunk an array 
 export const chunkArray = (array:[], chunk_size:number) => Array(Math.ceil(array.length / chunk_size)).fill([]).map((_, index) => index * chunk_size).map(begin => array.slice(begin, begin + chunk_size));
+
+export const  dateToNum = (d:string):number => {
+  // Convert date "26/06/2016" to 20160626
+  d.split("-"); 
+  return Number(d[0]+d[1]+d[2]);
+}

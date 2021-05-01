@@ -20,7 +20,6 @@ export function Stats(){
 
 export default function Navbar() {
   
-  const [sticky,setSticky] = useState(false);
   const {width} = useAppContext(); 
   const[hamIsOpen , setHam]  = useState(false);
 
