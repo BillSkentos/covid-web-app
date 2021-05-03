@@ -1,41 +1,56 @@
 import { Line} from 'react-chartjs-2';
 import {getDaysRangeArray} from '../Components/functions';
 
+interface DayResults { //single API result object 
+  area:string,
+  areaid:number,
+  dailydose1:number,
+  dailydose2:number,
+  daydiff:number,
+  daytotal:number,
+  referencedate:string,
+  totaldistinctpersons:number,
+  totaldose1:number,
+  totaldose2:number,
+  totalvaccinations:number,
+}
 
+interface ChartProps{
+  isLoading:boolean,
+  covidData:any[],
+  hasError:string,
+  to:Date|null,
+  from:Date|null,
 
-const Chart = (props:any) => {
+}
+
+const Chart = (props:ChartProps) => {
  
-  let daylist = getDaysRangeArray(new Date((props.from).toLocaleDateString('en-US')), new Date((props.to).toLocaleDateString('en-US')));
+  let daylist = getDaysRangeArray(new Date((props.from!).toLocaleDateString('en-US')), new Date((props.to!).toLocaleDateString('en-US')));
 
 
-  function getTotalVaccinations(data:any[]){   
-    let sum:number = data.reduce((acc:number,itm:any)=>{
-      if(itm.totalvaccinations!=="undefined"){
-        return acc + itm.totalvaccinations;
-      }
+  function getTotalVaccinations(data:[]){   
+    let sum:number = data.reduce((acc:number,itm:DayResults)=>{
+        return acc + itm.totalvaccinations
     },0);
     
     return sum;
   }
 
 
-  function getTotalDose1(data:any[]){
+  function getTotalDose1(data:[]){
     
-    let sum:number = data.reduce((acc:number,itm:any)=>{
-      if(itm.totaldose1!=="undefined"){
-        return acc + itm.totaldose1;
-      }
+    let sum:number = data.reduce((acc:number,itm:DayResults)=>{
+        return acc + itm.totaldose1
     },0);
     
     return sum;
   }
 
-  function getTotalDose2(data:any[]){
+  function getTotalDose2(data:[]){
     
-    let sum:number = data.reduce((acc:number,itm:any)=>{
-      if(itm.totaldose2!=="undefined"){
-        return acc + itm.totaldose2;
-      }
+    let sum:number = data.reduce((acc:number,itm:DayResults)=>{
+        return acc + itm.totaldose2
     },0);
     
     return sum;
@@ -53,31 +68,21 @@ const Chart = (props:any) => {
         datasets: [
             {
               label: 'Συνολικoί εμβολιασμοί',
-              data: [...props.covidData.map((d:any)=>getTotalVaccinations(d)).sort((a:any,b:any)=>{
+              data: [...props.covidData.map((d:[])=>getTotalVaccinations(d)).sort((a:any,b:any)=>{
                   return a-b 
               })],
               backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
-                // 'rgba(54, 162, 235, 0.2)',
-                // 'rgba(255, 206, 86, 0.2)',
-                // 'rgba(75, 192, 192, 0.2)',
-                // 'rgba(153, 102, 255, 0.2)',
-                // 'rgba(255, 159, 64, 0.2)',
               ],
               borderColor: [
                 'rgba(255, 99, 132, 1)',
-                // 'rgba(54, 162, 235, 1)',
-                // 'rgba(255, 206, 86, 1)',
-                // 'rgba(75, 192, 192, 1)',
-                // 'rgba(153, 102, 255, 1)',
-                // 'rgba(255, 159, 64, 1)',
               ],
               borderWidth: 1,
               pointRadius: 0,
             },
             {
               label: 'Συνολικά εμβόλια α΄δόσης ',
-               data: [...props.covidData.map((d:any)=>getTotalDose1(d)).sort((a:any,b:any)=>{
+               data: [...props.covidData.map((d:[])=>getTotalDose1(d)).sort((a:any,b:any)=>{
                 return a-b 
                 })],
               backgroundColor: 'orange',
@@ -87,7 +92,7 @@ const Chart = (props:any) => {
             },
             {
               label: 'Συνολικά εμβόλια β΄δόσης ',
-               data: [...props.covidData.map((d:any)=>getTotalDose2(d)).sort((a:any,b:any)=>{
+               data: [...props.covidData.map((d:[])=>getTotalDose2(d)).sort((a:any,b:any)=>{
                 return a-b 
                 })],
               backgroundColor: 'aqua',

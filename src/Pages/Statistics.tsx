@@ -5,7 +5,7 @@ import {  MuiPickersUtilsProvider,KeyboardDatePicker, } from '@material-ui/picke
 import Grid from '@material-ui/core/Grid';
 import Chart from '../Components/Chart';
 import useFetch from '../Components/useFetch';
-import {chunkArray,dateToNum} from '../Components/functions';
+import {chunkArray} from '../Components/functions';
 
 
 
@@ -15,9 +15,7 @@ export default function Statistics() {
   const [secondDate , setSecondDate] = useState<Date | null>(new Date());
 
   const {data,loading,error} = useFetch(firstDate!.toISOString().slice(0, 10),secondDate!.toISOString().slice(0, 10));
-  
-  // let test = data.sort((a:any,b:any)=> dateToNum((a.referencedate).slice(0,10)) - dateToNum((b.referencedate).slice(0,10) ));
-  
+    
   const updateFirst = (date:Date | null) => {
     setFirstDate(date);
   };
