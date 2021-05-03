@@ -41,6 +41,7 @@ export default function Statistics() {
             <KeyboardDatePicker
                 minDate = {new Date("2020-12-28")}
                 disableToolbar
+                disabled={loading}
                 variant="inline"
                 margin="normal"
                 id="date-picker-inline-first"
@@ -57,6 +58,7 @@ export default function Statistics() {
             <KeyboardDatePicker
                 maxDate = {new Date()}
                 disableToolbar
+                disabled={loading}
                 variant="inline"
                 margin="normal"
                 id="date-picker-inline-second"
