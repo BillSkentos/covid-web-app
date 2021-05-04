@@ -1,5 +1,6 @@
 import { Line} from 'react-chartjs-2';
-import {getDaysRangeArray} from '../Components/functions';
+import Loading from '../Components/Loading';
+
 
 interface DayResults { //single API result object 
   area:string,
@@ -21,15 +22,20 @@ interface ChartProps{
   hasError:string,
   to:Date|null,
   from:Date|null,
-
 }
+
+function convertDate(dt:string):number{
+  
+  let str = dt.split('-');
+  return Number (str[2]+str[1]+str[0]);
+}
+
 
 const Chart = (props:ChartProps) => {
  
-  let daylist = getDaysRangeArray(new Date((props.from!).toLocaleDateString('en-US')), new Date((props.to!).toLocaleDateString('en-US')));
 
 
-  function getTotalVaccinations(data:[]){   
+  function getTotalVaccinations(data:DayResults[]){   
     let sum:number = data.reduce((acc:number,itm:DayResults)=>{
         return acc + itm.totalvaccinations
     },0);
@@ -38,7 +44,7 @@ const Chart = (props:ChartProps) => {
   }
 
 
-  function getTotalDose1(data:[]){
+  function getTotalDose1(data:DayResults[]){
     
     let sum:number = data.reduce((acc:number,itm:DayResults)=>{
         return acc + itm.totaldose1
@@ -47,7 +53,7 @@ const Chart = (props:ChartProps) => {
     return sum;
   }
 
-  function getTotalDose2(data:[]){
+  function getTotalDose2(data:DayResults[]){
     
     let sum:number = data.reduce((acc:number,itm:DayResults)=>{
         return acc + itm.totaldose2
@@ -57,14 +63,27 @@ const Chart = (props:ChartProps) => {
   }
 
   return (
-    <div className="flex items-center place-items-center  w-full mx-auto">
-      {props.isLoading===true && <p>Loading ...</p>}
+    <div className="flex  p-2  items-center justify-center place-items-center w-full mx-auto">
+      {props.isLoading===true && 
+          <Loading />  
+      } 
+      
       {(props.covidData).length>0 
          && 
         <Line
+      
         type = "line"
         data={{
-          labels:[...daylist.map(d=>d.toDateString().slice(4,10))],
+        labels:[...props.covidData.map(arr=>{
+          return arr.reduce((acc:any,itm:any,index:number)=>{
+              if(index===0){
+                acc.push((new Date(itm.referencedate)).toISOString().replace(/T.*/,'').split('-').reverse().join('-'));
+              }
+              return acc;
+          },[])
+        }).flat().sort((a:any,b:any)=>{
+          return convertDate(a) - convertDate(b)
+        })],
         datasets: [
             {
               label: 'Συνολικoί εμβολιασμοί',
@@ -103,8 +122,8 @@ const Chart = (props:ChartProps) => {
           ],
         }}
         height={400}
-        width={600}
         options={{
+          responsive:true,
           maintainAspectRatio: false,
           scales: {
             yAxes: [

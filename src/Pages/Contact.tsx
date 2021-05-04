@@ -1,7 +1,5 @@
-import React from 'react';
 import Lottie from 'react-lottie';
 import ContactAnimation from '../Animations/37147-contact-us.json';
-import {useAppContext} from '../Components/ContextProvider';
 import {useForm} from 'react-hook-form';
 
 
@@ -14,7 +12,6 @@ interface UserInput {
 
 export default function Contact() {
   
-  const {width} =  useAppContext();
   const {register,handleSubmit,formState:{errors}} = useForm<UserInput>();
 
   const defaultOptions = {
@@ -37,13 +34,19 @@ export default function Contact() {
         onSubmit={submitFunction}
         className="maxW-screen-xl mt-24 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto  text-gray-900 rounded-lg shadow-lg">
         <div className="flex flex-col justify-between">
-          <div>
+          <div> <br/>
             <h2 className="text-4xl text-FQAItem lg:text-5xl font-bold leading-tight">Επικοινωνήστε μαζί μας </h2>
           </div>
           <div className="mt-8 text-center">
-            {width >=1024 && <Lottie options={defaultOptions} width={450} height={450}/> }
-            {(width <1024 && width >=768) && <Lottie options={defaultOptions} width={350} height={350}/> }
-            {width <768 && <Lottie options = {defaultOptions} width = {200} height={200} />}
+              <div className="hidden md:block lg:hidden">
+                <Lottie options={defaultOptions} width={350} height={400}/>
+              </div>
+              <div className="hidden lg:block md:hidden">
+                <Lottie options={defaultOptions} width={450} height={450}/>
+              </div>
+              <div className="md:hidden block">
+                <Lottie options={defaultOptions} width={200} height={200}/>
+              </div>
           </div>
         </div>
         <div className="">

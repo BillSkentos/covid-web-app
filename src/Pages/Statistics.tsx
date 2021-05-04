@@ -5,7 +5,7 @@ import {  MuiPickersUtilsProvider,KeyboardDatePicker, } from '@material-ui/picke
 import Grid from '@material-ui/core/Grid';
 import Chart from '../Components/Chart';
 import useFetch from '../Components/useFetch';
-import {chunkArray} from '../Components/functions';
+import {chunkArray, groupByDate} from '../Components/functions';
 
 
 
@@ -38,6 +38,7 @@ export default function Statistics() {
             <Grid container>
             <KeyboardDatePicker
                 minDate = {new Date("2020-12-28")}
+                maxDate = {new Date()}
                 disableToolbar
                 disabled={loading}
                 variant="inline"
@@ -54,6 +55,7 @@ export default function Statistics() {
             </Grid>
             <Grid container justify="space-around">
             <KeyboardDatePicker
+                // minDate = 
                 maxDate = {new Date()}
                 disableToolbar
                 disabled={loading}
@@ -75,7 +77,8 @@ export default function Statistics() {
         <div className="w-full mx-auto p-4 ">
           <Chart  
             isLoading = {loading} 
-            covidData = {chunkArray(data,74)}
+            covidData = {groupByDate(data)}
+            // covidData = {chunkArray(data,74)}
             hasError = {error}
             from = {firstDate}
             to = {secondDate}

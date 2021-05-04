@@ -5,7 +5,7 @@ import Footer from '../src/Components/Footer';
 import HomePage from '../src/Pages/HomePage';
 import FQA from '../src/Pages/FQA';
 import Contact from '../src/Pages/Contact';
-import {Stats , Dates , News } from '../src/Components/Navbar';
+import {Dates , News } from '../src/Components/Navbar';
 import {BrowserRouter as Router , Switch , Route} from 'react-router-dom';
 import Statistics from '../src/Pages/Statistics';
 

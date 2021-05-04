@@ -47,10 +47,15 @@ export const integerToString = (num:number) : string =>{
 }
 
 
-export const getDaysRangeArray = (start:Date,end:Date) =>{
+export const getDaysRangeArray = (start:Date,array:any[]) =>{
   
   let dateArr = [];
-
+  let end = new Date();
+  let len = array.forEach(itm=>{
+    return itm.reduce((acc:any,i:any,index:number)=>{
+      return acc +index;
+    },0)
+  })
   for(let dt=new Date(start); dt<=end; dt.setDate(dt.getDate()+1)){
   dateArr.push(new Date(dt));
   }
@@ -58,11 +63,34 @@ export const getDaysRangeArray = (start:Date,end:Date) =>{
   return dateArr;
 }
 
+
+
+
 //chunk an array 
 export const chunkArray = (array:[], chunk_size:number) => Array(Math.ceil(array.length / chunk_size)).fill([]).map((_, index) => index * chunk_size).map(begin => array.slice(begin, begin + chunk_size));
 
   export const  dateToNum = (d:string):number => {
-    // Convert date "26/06/2016" to 20160626
+    // Convert date "26-06-2016" to 20160626
     d.split("-"); 
     return Number(d[0]+d[1]+d[2]);
+}
+
+export const groupByDate = (array :any[] ) =>{
+   
+  let grouped = [];
+  let tmpObj:any = {};
+  array.forEach(item => {
+  //convert date to an acceptable identifier
+  let d:any = "D_" + item.referencedate.replace(/[^a-zA-Z0-9]/g, "");
+  if (tmpObj[d]) {
+    tmpObj[d].push(item);
+  } else {
+    tmpObj[d] = [item]
   }
+  });
+
+  for (let i in tmpObj) grouped.push(tmpObj[i]);
+
+  return grouped;
+}
+    

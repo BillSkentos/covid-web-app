@@ -1,9 +1,7 @@
-import React from 'react';
-import {useState,useEffect} from 'react';
+import {useState} from 'react';
 import {Transition} from '@tailwindui/react';
 import {Link} from 'react-router-dom';
 
-import {useAppContext} from '../Components/ContextProvider';
 
 export function News(){
   return <h1>I am news !</h1>
@@ -13,14 +11,10 @@ export function Dates(){
   return <h1>I am dates !</h1>
 }
 
-export function Stats(){
-  return <h1>I am stats !</h1>
-}
 
 
 export default function Navbar() {
   
-  const {width} = useAppContext(); 
   const[hamIsOpen , setHam]  = useState(false);
 
   const navOptions : {option:string , link:string}[] = [
@@ -78,8 +72,7 @@ export default function Navbar() {
 
         </Transition>
 
-        {
-          width >= 1024 &&  <div className="text-base space-x-12 -ml-2">
+        <div className=" hidden lg:block text-base space-x-12 -ml-2">
             {
                 navOptions.map((item)=>{
                   return (
@@ -90,7 +83,7 @@ export default function Navbar() {
                 })
             }
         </div> 
-        }
+        
 
       </nav>
   
