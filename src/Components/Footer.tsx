@@ -10,7 +10,7 @@ export default function Footer() {
             <img className="w-20" src="https://covid19.gov.gr/wp-content/uploads/2020/05/menoume_asfaleis_blue.svg" alt = "covidPic"/>
             <img className="w-20" src="https://covid19.gov.gr/wp-content/uploads/2020/03/menoume_spiti-600-600-plain.svg" alt="covidPic"/>
           </div> <br/>
-          <div className="flex-row flex items-center justify-between space-x-2 p-4">
+          <div className="flex-row flex items-center justify-between space-x-4 md:space-x-2 p-4">
             <a href="/#" className="w-6 mx-1">
                 <svg className="fill-current cursor-pointer text-white hover:text-lightBlue" width="150%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve"  >
                   <path id="Facebook" d="M24,12c0,6.627 -5.373,12 -12,12c-6.627,0 -12,-5.373 -12,-12c0,-6.627
