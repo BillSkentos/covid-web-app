@@ -10,7 +10,6 @@ interface DateForm {
   phone:string,
   AMKA:string,
   rantevou:Date,
-  gender:string
 }
 
 
@@ -30,7 +29,7 @@ function generateRandomDate(min:number,max:number):string{
 export default function EmvolioDate() {
 
   const {register,handleSubmit,formState:{errors}} = useForm<DateForm>();
-  const [loading,setLoading] = useState(false);
+  const [loading,setLoading] = useState<boolean>(false);
   const [dateTime,setDateTime] = useState<string>(new Date().toISOString().slice(0, -8));
 
   const defaultOptions = {
@@ -57,7 +56,6 @@ export default function EmvolioDate() {
             },
             body:JSON.stringify(data)
           });
-          console.log(response);
           if (response.status===200){
             alert('Το ραντεβού έκλεισε με επιτυχία !');
           }else if (response.status===400){
@@ -79,31 +77,35 @@ export default function EmvolioDate() {
      if(window.confirm('Θα θέλατε να συμπληρωθεί ένα ραντεβού αυτόματα ;')){
         setDateTime(generateRandomDate(new Date().getDay() ,new Date().getDay()+ 19));
         window.scrollTo({
-          top:1000,
+          top:500,
           behavior:'smooth'
         })
      }else{
       window.scrollTo({
-        top:300,
+        top:100,
         behavior:'smooth'
       })
      }
     },500);
-  },[])
+  },[]);
 
   return (
-  <div className="mt-12">
+  <div className="mt-12 p-2">
     <form
-      id = "rantevouform"
       onSubmit = {sendRequestAfterSubmit}
-      className="maxW-screen-xl mt-24 px-8 grid gap-16 grid-cols-1  md:px-12 lg:px-16 xl:px-32 py-16 mx-auto  text-gray-900 rounded-lg shadow-lg">
+      className="maxW-screen-xl mt-24 px-8 grid gap-16 grid-cols-1 lg:grid-cols-2  md:px-12 lg:px-16 xl:px-32 py-16 mx-auto  text-gray-900 rounded-lg shadow-lg">
       <div className="flex items-center flex-col justify-between">
         <div> <br/>
-          <h2 className="text-4xl text-FQAItem lg:text-5xl font-bold leading-tight">Συμπληρώστε τα στοιχεία σας για να κλείσετε ραντεβού. </h2>
+          <h2 className=" text-2xl md:text-4xl text-FQAItem lg:text-5xl font-bold leading-tight">Συμπληρώστε τα στοιχεία σας για να κλείσετε ραντεβού. </h2>
         </div>
-        <div className="mt-2 text-center">
-        
-            <div className="hidden md:block">
+        <div className="mt-2">
+            <div className="xl:block hidden">
+              <Lottie  options={defaultOptions} width={600} height={350}/>
+            </div>
+            <div className="lg:block hidden xl:hidden">
+              <Lottie  options={defaultOptions} width={405} height={250}/>
+            </div>
+            <div className="hidden md:block lg:hidden">
               <Lottie  options={defaultOptions} width={650} height={400}/>
             </div>
             <div className="md:hidden block">
