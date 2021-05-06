@@ -1,13 +1,13 @@
-import React from 'react';
 import './App.css';
 import NavBar from '../src/Components/Navbar';
 import Footer from '../src/Components/Footer';
 import HomePage from '../src/Pages/HomePage';
 import FQA from '../src/Pages/FQA';
 import Contact from '../src/Pages/Contact';
-import {Dates , News } from '../src/Components/Navbar';
+import {News } from '../src/Components/Navbar';
 import {BrowserRouter as Router , Switch , Route} from 'react-router-dom';
 import Statistics from '../src/Pages/Statistics';
+import EmvolioDate from '../src/Pages/EmvolioDate';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
           <Route  path = "/news"> <News/>  </Route>
           <Route  path = "/stats"> <Statistics/>  </Route>
           <Route  path = "/contact"> <Contact/>  </Route>
-          <Route  path = "/dates"> <Dates/>  </Route>
+          <Route  path = "/dates"> <EmvolioDate/>  </Route>
         </Switch>
       </Router>
       <Footer />

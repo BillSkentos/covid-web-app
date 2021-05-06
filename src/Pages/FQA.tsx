@@ -1,9 +1,8 @@
-import React from 'react';
 import {questions} from '../Components/QuestionList';
 import {integerToString} from '../Components/functions';
 
-
 export default function FQA() {
+
 
   return (
     <div className= "w-full flex items-center flex-col space-y-4 bg-FQA p-8 mt-4">

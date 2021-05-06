@@ -51,40 +51,40 @@ export default function Contact() {
         </div>
         <div className="">
           <div>
-            <span className="uppercase text-sm text-FQAItem font-bold ">First Name</span>
-            <input className="w-full focus:bg-gray-100 bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+            <span className="uppercase text-sm text-FQAItem font-bold ">ΟΝΟΜΑ</span>
+            <input className="w-full focus:bg-gray-100 bg-gray-200 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
               {...register("firstName" , {required:true})}
               type="text" placeholder="" />
-              {errors.firstName && <span className="text-red-400 text-sm"> First Name is required .  </span> }
+              {errors.firstName && <span className="text-red-400 text-sm"> Το όνομα είναι υποχρεωτικό.  </span> }
           </div>
           <div className="mt-8">
-            <span className="uppercase text-sm text-FQAItem font-bold">Last Name</span>
-            <input className="w-full focus:bg-gray-100 bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+            <span className="uppercase text-sm text-FQAItem font-bold">Επιθετο</span>
+            <input className="w-full focus:bg-gray-100 bg-gray-200 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
               {...register("lastName" , {required:true})}
               type="text" placeholder="" />
-              {errors.lastName && <span className="text-red-400 text-sm"> Last Name is required .  </span> }
+              {errors.lastName && <span className="text-red-400 text-sm"> Το επίθετο είναι υποχρεωτικό .  </span> }
 
           </div>
           <div className="mt-8">
             <span className="uppercase text-sm text-FQAItem font-bold">Email</span>
-            <input className="w-full focus:bg-gray-100 bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+            <input className="w-full focus:bg-gray-100 bg-gray-200 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
               {...register("email" , {required:true})}
 
               type="email" />
-              {errors.email && <span className="text-red-400 text-sm"> Enter a correct email.  </span> }
+              {errors.email && <span className="text-red-400 text-sm"> Συμπληρώστε το σωστό email  </span> }
 
           </div>
           <div className="mt-8">
-            <span className="uppercase text-sm text-FQAItem font-bold">Message</span>
+            <span className="uppercase text-sm text-FQAItem font-bold">ΜΗΝΥΜΑ</span>
             <input
               {...register("message" , {required:true , minLength:10})}
-              className="w-full h-32 focus:bg-gray-100 bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"></input>
-              {errors.message && <span className="text-red-400 text-sm"> Message should be at least 10 characters .  </span> }
+              className="w-full h-32 focus:bg-gray-100 bg-gray-200 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"></input>
+              {errors.message && <span className="text-red-400 text-sm"> Το μήνυμα περίεχει τουλάχιστον 10 χαρακτήρες .  </span> }
           </div>
           <div className="mt-8">
             <button
               className="uppercase text-sm font-bold trackingWide bg-indigo-500 hover:bg-indigo-400 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline">
-              Send Message
+              Αποστολή
             </button>
           </div>
         </div>

@@ -22,7 +22,6 @@ export default function VideoSlider() {
     { width: 1200, itemsToShow: 3 }
   ];
 
-
   return (
     <div className="bg-FQAItem  h-84 p-4">
         <div className="w-full carousel-wrapper">
