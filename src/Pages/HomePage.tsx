@@ -5,10 +5,10 @@ import Carousel from '../Components/Carousel';
 import VideoSlider from '../Components/VideoSlider.js';
 import {latestNews} from '../Components/LatestNewsList';
 import LatestNewsCard from '../Components/LatestNewsCard';
+import AppFeatures from '../Components/AppFeatures';
 
 export default function HomePage() {
   
-
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -25,7 +25,7 @@ export default function HomePage() {
         <div className="lg:w-1/2 w-full flex flex-col space-y-8 items-center">
           <h1 className="mt-12 text-lg sm:mt-4 font-mono sm:pl-12 sm:text-4xl text-bold text-FQAItem">Κλέισε ραντεβού για εμβολιασμό και <br/> δες πληροφορίες για τον κωροναϊό εδώ
           </h1>
-          <Link to="/FQA" className="shadow-buttonShadow  w-32 h-12 font-sans sm:ml-12 text-base text-center rounded-md py-3  font-bold cursor-pointer tracking-wider text-white   bg-lightBlue hover:bg-orange transition ease-out duration-700">
+          <Link to="/dates" className="shadow-buttonShadow  w-32 h-12 font-sans sm:ml-12 text-base text-center rounded-md py-3  font-bold cursor-pointer tracking-wider text-white   bg-lightBlue hover:bg-orange transition ease-out duration-700">
             Ξεκινήστε
           </Link>
 
@@ -41,7 +41,12 @@ export default function HomePage() {
             <Lottie options = {defaultOptions} width={300} height={300} /> 
           </div>
         </div>
-      </div> <br/>
+      </div> 
+      <div className = "flex items-center flex-col justify-center">
+        <h1 className="text-FQAItem font-bold text-base sm:text-2xl md:text-3xl lg:text-4xl p-2">Πλοήγηση</h1> 
+        <hr className = "border-top-4 border-FQAItem w-32 sm:w-44 md:w-1/4  lg:w-1/5"/> <br/>
+      </div>
+      <AppFeatures /> <br/>
       <Carousel /> <br/>
       <VideoSlider /> 
       <div className="flex items-center justify-center">
