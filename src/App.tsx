@@ -8,6 +8,7 @@ import {News } from '../src/Components/Navbar';
 import {BrowserRouter as Router , Switch , Route} from 'react-router-dom';
 import Statistics from '../src/Pages/Statistics';
 import EmvolioDate from '../src/Pages/EmvolioDate';
+import ScrollTop from '../src/Components/ScrollTop';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route  path = "/dates"> <EmvolioDate/>  </Route>
         </Switch>
       </Router>
+      <ScrollTop />
       <Footer />
     </div>
   );

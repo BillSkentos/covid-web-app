@@ -25,11 +25,9 @@ export default function Statistics() {
     setSecondDate(date);
   };
 
-
-
   return (
     <div className="flex  flex-col space-between space-y-16 mt-36">
-      <h1 className="p-8 text-lg md:text-6xl text-black">Στατιστικά εμβολιασμού <br/> για τον COVID-19</h1>
+      <h1 className="p-8 mt-4 text-lg md:text-6xl text-black">Στατιστικά εμβολιασμού <br/> για τον COVID-19</h1>
       <div className=" flex flex-col justify-center place-items-center  space-y-4">
         <h4 className="text-2xl text-black font-bold">Περιγραφή δεδομένων</h4>
         <p className="text-black">Στατιστικά εμβολιασμών κατά του COVID-19 ανά περιφερειακή ενότητα και ημέρα</p>

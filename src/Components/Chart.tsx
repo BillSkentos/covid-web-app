@@ -1,6 +1,6 @@
 import { Line} from 'react-chartjs-2';
 import Loading from '../Components/Loading';
-
+import NoResults from '../Animations/noresults.png';
 
 interface DayResults { //single API result object 
   area:string,
@@ -43,7 +43,6 @@ const Chart = (props:ChartProps) => {
     return sum;
   }
 
-
   function getTotalDose1(data:DayResults[]){
     
     let sum:number = data.reduce((acc:number,itm:DayResults)=>{
@@ -62,16 +61,30 @@ const Chart = (props:ChartProps) => {
     return sum;
   }
 
+
+  function getPeopleInjected(data:DayResults[]){
+    
+    let sum:number = data.reduce((acc:number,itm:DayResults)=>{
+      return acc + itm.totaldistinctpersons
+  },0);
+  
+  return sum;
+  }
+
   return (
-    <div className="flex  p-2  items-center justify-center place-items-center w-full mx-auto">
-      {props.isLoading===true && 
-          <Loading />  
-      } 
+    <div className="flex p-2 items-center justify-center h-80 place-items-center w-full mx-auto">
       
+      {props.isLoading===true && <Loading /> } 
+      {((props.covidData).length === 0 && props.isLoading === false )&& 
+        <div className = "grid grid-cols-1 space-y-2 place-items-center w-full mx-auto h-60"> 
+          <img className=" h-20 md:h-40 object-contain" src = {NoResults} alt = "empty"/> 
+          <h1 className="font-bold text-base lg:text-xl">Δε βρέθηκαν αποτελέσματα . Παρακαλώ ξαναδοκιμάστε</h1>
+        </div>
+      }
+
       {(props.covidData).length>0 
          && 
         <Line
-      
         type = "line"
         data={{
         labels:[...props.covidData.map(arr=>{
@@ -86,7 +99,7 @@ const Chart = (props:ChartProps) => {
         })],
         datasets: [
             {
-              label: 'Συνολικoί εμβολιασμοί',
+              label: 'Συνολικoί εμβολιασμοί        ',
               data: [...props.covidData.map((d:[])=>getTotalVaccinations(d)).sort((a:any,b:any)=>{
                   return a-b 
               })],
@@ -104,8 +117,8 @@ const Chart = (props:ChartProps) => {
                data: [...props.covidData.map((d:[])=>getTotalDose1(d)).sort((a:any,b:any)=>{
                 return a-b 
                 })],
-              backgroundColor: 'orange',
-              borderColor: 'red',
+              backgroundColor: '#00FF00',
+              borderColor: 'green',
               borderWidth:1,
               pointRadius: 0,
             },
@@ -115,7 +128,17 @@ const Chart = (props:ChartProps) => {
                 return a-b 
                 })],
               backgroundColor: 'aqua',
-              borderColor: 'orange',
+              borderColor: '#1799B5',
+              borderWidth:1,
+              pointRadius: 0,
+            },
+            {
+              label: 'Συνολικός αριθμός εμβολιασμένων',
+               data: [...props.covidData.map((d:[])=>getPeopleInjected(d)).sort((a:any,b:any)=>{
+                return a-b 
+                })],
+              backgroundColor: '#ff08d4',
+              borderColor: 'purple',
               borderWidth:1,
               pointRadius: 0,
             },

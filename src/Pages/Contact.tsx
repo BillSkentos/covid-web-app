@@ -84,7 +84,7 @@ export default function Contact() {
           <div className="mt-8">
             <button
               className="uppercase text-sm font-bold trackingWide bg-indigo-500 hover:bg-indigo-400 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline">
-              Αποστολή
+              Αποστολη
             </button>
           </div>
         </div>
