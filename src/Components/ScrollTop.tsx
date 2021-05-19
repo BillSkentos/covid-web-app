@@ -3,7 +3,7 @@ import {useState,useEffect} from 'react';
 
 export default function ScrollTop() {
 
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -15,7 +15,7 @@ export default function ScrollTop() {
   useEffect(() => {
     // Button is displayed after scrolling for 500 pixels
       const toggleVisibility = () => {
-        if (window.pageYOffset > 500) {
+        if (window.pageYOffset > 150) {
 
           setIsVisible(true);
         } else {
