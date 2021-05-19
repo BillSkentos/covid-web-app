@@ -24,6 +24,24 @@ interface ChartProps{
   from:Date|null,
 }
 
+function toIsoString(date:Date) {
+  let tzo = -date.getTimezoneOffset(),
+      dif = tzo >= 0 ? '+' : '-',
+      pad = function(num:number) {
+          let norm = Math.floor(Math.abs(num));
+          return (norm < 10 ? '0' : '') + norm;
+      };
+
+  return date.getFullYear() +
+      '-' + pad(date.getMonth() + 1) +
+      '-' + pad(date.getDate()) +
+      'T' + pad(date.getHours()) +
+      ':' + pad(date.getMinutes()) +
+      ':' + pad(date.getSeconds()) +
+      dif + pad(tzo / 60) +
+      ':' + pad(tzo % 60);
+}
+
 function convertDate(dt:string):number{
   
   let str = dt.split('-');
@@ -33,7 +51,6 @@ function convertDate(dt:string):number{
 
 const Chart = (props:ChartProps) => {
  
-
 
   function getTotalVaccinations(data:DayResults[]){   
     let sum:number = data.reduce((acc:number,itm:DayResults)=>{
@@ -88,9 +105,9 @@ const Chart = (props:ChartProps) => {
         type = "line"
         data={{
         labels:[...props.covidData.map(arr=>{
-          return arr.reduce((acc:any,itm:any,index:number)=>{
+          return arr.reduce((acc:string[],itm:DayResults,index:number)=>{
               if(index===0){
-                acc.push((new Date(itm.referencedate)).toISOString().replace(/T.*/,'').split('-').reverse().join('-'));
+                acc.push(toIsoString(new Date(itm.referencedate)).replace(/T.*/,'').split('-').reverse().join('-'));
               }
               return acc;
           },[])
