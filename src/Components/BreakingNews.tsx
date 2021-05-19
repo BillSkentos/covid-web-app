@@ -1,7 +1,7 @@
 
 export default function BreakingNews() {
   return (
-<div className="tcontainer">
+    <div className="tcontainer">
         <div className="ticker-wrap">
             <div className="ticker-move">
                 <div className="ticker-item">Poor state of poverty alleviation.</div>
