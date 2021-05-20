@@ -12,8 +12,8 @@ export default function useFetch(date1:string, date2:string) {
     const url = `https://data.gov.gr/api/v1/query/mdg_emvolio?date_from=${date1}&date_to=${date2}`;
   
     try{
-      setLoading(true);
-      setData([]);
+      setLoading(true); //loading is true while no results
+      setData([]); //data is empty 
       let response = await fetch(url,{
           method:'GET',
           headers:{
@@ -27,7 +27,8 @@ export default function useFetch(date1:string, date2:string) {
         throw new Error(`HTTP error ${response.status}`);
       }
 
-      const res:[] = await response.json();
+      const res:[] = await response.json(); //get response data 
+      //sort results by dates 
       res.sort((a:any,b:any)=> dateToNum((a.referencedate).slice(1,10)) - dateToNum((b.referencedate).slice(1,10) ));
       setData(res);
     }catch(error){
