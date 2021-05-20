@@ -10,8 +10,8 @@ import AppFeatures from '../Components/AppFeatures';
 export default function HomePage() {
   
   const defaultOptions = {
-    loop: true,
-    autoplay: true,
+    loop: false,
+    autoplay: false,
     animationData: DoctorAnimation,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice"
