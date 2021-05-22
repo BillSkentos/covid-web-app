@@ -7,7 +7,7 @@ module.exports = {
         FQA:'#f0fbff',
         FQAItem: '#003476',
         lightBlue:'#2dbae8',
-        orange:'#fd7e14'
+        orange:'#fd7e14',
       },
       fontFamily:{
         'sans':['Roboto' , 'Sans-serif']

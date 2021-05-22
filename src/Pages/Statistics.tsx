@@ -1,11 +1,11 @@
-import {useState,useEffect} from 'react';
+import {useState} from 'react';
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import {  MuiPickersUtilsProvider,KeyboardDatePicker, } from '@material-ui/pickers';
 import Grid from '@material-ui/core/Grid';
 import Chart from '../Components/Chart';
 import useFetch from '../Components/useFetch';
-import {chunkArray, groupByDate} from '../Components/functions';
+import {groupByDate} from '../Components/functions';
 
 
 
@@ -76,7 +76,6 @@ export default function Statistics() {
           <Chart  
             isLoading = {loading} 
             covidData = {groupByDate(data)}
-            // covidData = {chunkArray(data,74)}
             hasError = {error}
             from = {firstDate}
             to = {secondDate}

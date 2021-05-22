@@ -2,17 +2,6 @@ import {useState} from 'react';
 import {Transition} from '@tailwindui/react';
 import {Link} from 'react-router-dom';
 
-
-export function News(){
-  return <h1>I am news !</h1>
-}
-
-export function Dates(){
-  return <h1>I am dates !</h1>
-}
-
-
-
 export default function Navbar() {
   
   const[hamIsOpen , setHam]  = useState(false);

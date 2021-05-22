@@ -3,7 +3,7 @@ import ContactAnimation from '../Animations/37147-contact-us.json';
 import {useForm} from 'react-hook-form';
 
 
-interface UserInput {
+interface UserInput { //form input 
   firstName:string,
   lastName:string,
   email:string,
